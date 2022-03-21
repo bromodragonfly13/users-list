@@ -3,6 +3,7 @@
 class User{
 
     private $conn;
+    private $db_table = 'users';
 
     public $id;
     public $f_name;
@@ -13,5 +14,41 @@ class User{
     public function __construct($db)
     {
         $this->conn = $db;
+    }
+
+    public function read()
+    {
+        $query = "SELECT * FROM $this->db_table";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt;
+
+    }
+
+    public function create()
+    {
+        $query = "INSERT INTO
+        " . $this->db_table . "SET f_name=:f_name, l_name=:l_name, role=:role, status=:status";
+
+        $stmt = $this->conn->prepare($query);
+
+        $this->f_name=htmlspecialchars(strip_tags($this->f_name));
+        $this->l_name=htmlspecialchars(strip_tags($this->l_name));
+        $this->role=htmlspecialchars(strip_tags($this->role));
+        $this->status=htmlspecialchars(strip_tags($this->status));
+
+        $stmt->bindParam(":f_name", $this->f_name);
+        $stmt->bindParam(":l_name", $this->l_name);
+        $stmt->bindParam(":role", $this->role);
+        $stmt->bindParam(":status", $this->status);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+
     }
 }

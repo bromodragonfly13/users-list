@@ -29,9 +29,15 @@ if($num>0) {
         );
 
         array_push($users_arr["records"], $user_item);
-    }
+    } 
+    
 
     http_response_code(200);
 
     echo json_encode($users_arr);
+} 
+else{
+    http_response_code(404);
+    echo json_encode(array("message" => "Пользователи не найдены"), JSON_UNESCAPED_UNICODE);
+
 }
