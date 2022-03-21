@@ -18,7 +18,7 @@
             <div class="e-panel card">
               <div class="card-body">
                 <div class="mb-2">
-                  <div id='add-user' class='btn btn-success pull-right m-b-15px add-user-button ml-2 create-user-button'>
+                  <div id='add-user' class='btn btn-success pull-right m-b-15px add-user-button ml-2 create-user-button' data-toggle="modal" data-target="#createModal">
                     Добавить
                   </div>
                   <div id='add-user' class='btn btn-primary pull-right m-b-15px add-user-button'>
@@ -38,57 +38,69 @@
           </div>
         </div>
 
-        <!-- User Form Modal -->
-        <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
-          <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Edit user</h5>
-                <button type="button" class="close" data-dismiss="modal">
-                  <span aria-hidden="true">×</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="py-1">
-                  <form class="form" novalidate="">
-                    <div class="row">
-                      <div class="col">
-                        <div class="row">
-                          <div class="col">
-                            <div class="form-group">
-                              <label>First Name</label>
-                              <input class="form-control" type="text" name="name" placeholder="John" value="John">
-                            </div>
+
+          <!-- User Edit Form Modal -->
+  <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <form action="" id="myForm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createModalLabel">Новый пользователь</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-body">
+              <div class="py-1">
+                  <div class="row">
+                    <div class="col">
+                      <div class="row">
+                        <div class="col">
+                          <div class="form-group">
+                            <label>First Name</label>
+                            <input class="form-control" type="text" name="f_name">
                           </div>
-                          <div class="col">
-                            <div class="form-group">
-                              <label>Last name</label>
-                              <input class="form-control" type="text" name="username" placeholder="Smith" value="Smith">
-                            </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-group">
+                            <label>Last name</label>
+                            <input class="form-control" type="text" name="l_name">
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="row">
-                      <div class="col d-flex justify-content-end">
-                        <button class="btn btn-primary" type="submit">Save Changes</button>
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Role</label>
+                          <input class="form-control" type="text" name="role">
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div class="form-group">
+                          <label>Status</label>
+                          <input class="form-control" type="text" name="status">
+                        </div>
                       </div>
                     </div>
-                  </form>
-                </div>
+                  </div>
               </div>
             </div>
           </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+            <button type="submit" class="btn btn-primary" id="store-user-button">Добавить</button>
+          </div>
         </div>
-      </div>
+      </form> 
     </div>
   </div>
+
 
   <script src="app.js"></script>
   <script src="js/users/read-user.js"></script>
   <script src="js/users/read-one-user.js"></script>
-  <script src="js/users/create-user.js"></script>
   <script src="js/users/update-user.js"></script>
   <script src="js/users/delete-user.js"></script>
+  <script src="js/users/create-user.js"></script>
 </body>
 </html>

@@ -19,7 +19,7 @@ $user = new User($db);
 //echo json_encode($_POST); die();
 
 if (!empty($_POST['f_name']) && !empty($_POST['l_name']) &&
-isset($_POST['role']) && isset($_POST['status'])) {
+    !empty($_POST['role']) && isset($_POST['status'])) {
     $user->f_name = $_POST['f_name'];
     $user->l_name = $_POST['l_name'];
     $user->status = $_POST['status'];
