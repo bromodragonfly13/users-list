@@ -14,18 +14,18 @@ $db = $database->getConnection();
 
 $user = new User($db);
 
-$data = json_decode(file_get_contents("php://input"));
+//$data = json_decode(file_get_contents("php://input"));
 
-if(
-    !empty($data->f_name) &&
-    !empty($data->l_name) &&
-    !empty($data->status) &&
-    !empty($data->role)
-) {
-    $user->f_name = $data->f_name;
-    $user->l_name = $data->l_name;
-    $user->status = $data->status;
-    $user->role = $data->role;
+//echo json_encode($_POST); die();
+
+if (!empty($_POST['f_name']) && !empty($_POST['l_name']) &&
+isset($_POST['role']) && isset($_POST['status'])) {
+    $user->f_name = $_POST['f_name'];
+    $user->l_name = $_POST['l_name'];
+    $user->status = $_POST['status'];
+    $user->role = $_POST['role'];
+
+
 
     if($user->create()){
 
