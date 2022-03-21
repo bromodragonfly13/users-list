@@ -2,10 +2,10 @@
 
 class Database{
 
-    private $host = "localhost";
-    private $username = "root";
-    private $password = "root";
-    private $db = "testwork113";
+    private $host = "fdb34.awardspace.net";
+    private $username = "4069303_tetsban";
+    private $password = "08PF,l]}8})hZE1u";
+    private $db = "4069303_tetsban";
 
     public function getConnection()
     {
