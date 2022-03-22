@@ -6,6 +6,7 @@ jQuery(function($){
 
         let form_data = new FormData(document.getElementById("myForm"));
 
+
         $.ajax({
             url: "users/create.php",
             type : "POST",

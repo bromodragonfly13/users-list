@@ -40,8 +40,8 @@ function showUsers(){
         "></i></td>
         <td class="text-center align-middle">
         <div class="btn-group align-top">
-            <button class="btn btn-sm btn-outline-secondary badge" type="button" data-toggle="modal"
-            data-target="#user-edit-modal" id='` + val.id + `'>Edit</button>
+            <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-toggle="modal"
+            data-target="#editModal" data-id='` + val.id + `'>Edit</button>
             <button class="btn btn-sm btn-outline-secondary badge delete-user-button" type="button" data-id='` + val.id + `'>
             <i class="fa fa-trash" ></i></button>
         </div>
