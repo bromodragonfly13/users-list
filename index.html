@@ -21,9 +21,6 @@
                   <div id='add-user' class='btn btn-success pull-right m-b-15px add-user-button ml-2 create-user-button' data-toggle="modal" data-target="#createModal">
                     Добавить
                   </div>
-                  <div id='add-user' class='btn btn-primary pull-right m-b-15px add-user-button'>
-                    Редактировать
-                  </div>
                 </div>
                 <div class="card-title">
                   <h6 class="mr-2"><span>Users</span></h6>
@@ -69,17 +66,22 @@
                           </div>
                         </div>
                       </div>
-                      <div class="col">
-                        <div class="form-group">
-                          <label>Role</label>
-                          <input class="form-control" type="text" name="role" id="role">
-                        </div>
+                      <div class="form-group">
+                        <label for="exampleFormControlSelect1">Example select</label>
+                        <select class="form-control" id="" name="role">
+                          <option value="1">Active</option>
+                          <option value="2">User</option>
+                          <option value="3">Admin</option>
+                        </select>
                       </div>
-                      <div class="col">
-                        <div class="form-group">
-                          <label>Status</label>
-                          <input class="form-control" type="text" name="status" id="status">
-                        </div>
+                      <label for="">Status: </label>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status" id="statusRadio1" value="1">
+                        <label class="form-check-label" for="statusRadio1">Active</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="status" id="statusRadio2" value="0">
+                        <label class="form-check-label" for="statusRadio2">disabled</label>
                       </div>
                     </div>
                   </div>

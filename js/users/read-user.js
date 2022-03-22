@@ -15,7 +15,19 @@ function showUsers(){
         </div>
         </td>
         <td class="text-nowrap align-middle">`+ val.l_name + ` `+val.f_name+`</td>
-        <td class="text-nowrap align-middle"><span>`+val.role+`</span></td>
+        <td class="text-nowrap align-middle"><span>`;
+        
+        if(val.role==1){
+            read_products_html += ` Active `;
+        }
+        if(val.role==2){
+            read_products_html += ` User `;
+        }
+        if(val.role==3){
+            read_products_html += ` Admin `;
+        }
+
+        read_products_html += `</span></td>
         <td class="text-center align-middle"><i class="fa fa-circle`; 
 
         if(val.status==1){
@@ -40,12 +52,7 @@ function showUsers(){
     $("#content_body").append(read_products_html);
     
 
-});
+    });
 
 });
-
-
-
-
-
 }
