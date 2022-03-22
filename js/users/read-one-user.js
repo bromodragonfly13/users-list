@@ -15,8 +15,6 @@ function showOneUser(user_id){
         cache: false,
         data : form_data,
         success : function(result) {
-
-            console.log(result.f_name)
             
             $("#f_name_edit").val(result.f_name);
             $("#l_name_edit").val(result.l_name);

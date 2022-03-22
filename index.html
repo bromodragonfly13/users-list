@@ -39,7 +39,7 @@
           <!-- User Create Form Modal -->
   <div class="modal fade" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <form action="" id="myForm">
+      <form action="" id="myCreateForm">
         <div class="modal-content">
           <div class="modal-header">
             <h5 class="modal-title" id="createModalLabel">Новый пользователь</h5>
@@ -100,10 +100,10 @@
           <!-- User Edit Form Modal -->
   <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-      <form action="" id="myForm">
+      <form action="" id="myEditForm">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="createModalLabel">Новый пользователь</h5>
+            <h5 class="modal-title" id="createModalLabel">Обновить информацию</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -129,7 +129,7 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" id="role_edit" name="role_edit">
+                        <select class="form-control" id="role_edit" name="role">
                           <option value="1">Active</option>
                           <option value="2">User</option>
                           <option value="3">Admin</option>
@@ -151,7 +151,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-            <button type="submit" class="btn btn-primary" id="store-user-button">Добавить</button>
+            <button type="submit" class="btn btn-primary" id="update-user-button">Обновить</button>
           </div>
         </div>
       </form> 

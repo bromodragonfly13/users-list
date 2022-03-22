@@ -1,10 +1,12 @@
 jQuery(function($){
 
+    
+
     $(document).on('click', '#store-user-button', function(e){
         
         e.preventDefault();
 
-        let form_data = new FormData(document.getElementById("myForm"));
+        let form_data = new FormData(document.getElementById("myCreateForm"));
 
 
         $.ajax({
