@@ -15,6 +15,10 @@ jQuery(function($){
             data : form_data,
             success : function(result) {
                 $('#content_body').empty();
+                $("#f_name").val("");
+                $("#l_name").val("");
+                $("#status").val("");
+                $("#role").val("");
                 showUsers();
             },
             error: function(xhr, resp, text) {
