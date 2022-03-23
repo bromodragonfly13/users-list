@@ -49,8 +49,12 @@ $(document).ready(function() {
             });
         });
 
+
+        checkedInput = [];
+        
         $('input:checked').prop('checked', false);
         $('#content_body').empty();
+        hideButtons();
         showUsers();
 
     });
@@ -92,8 +96,10 @@ $(document).ready(function() {
             });
         });
 
+        checkedInput = [];
         $('input:checked').prop('checked', false);
         $('#content_body').empty();
+        hideButtons();
         showUsers();
     });
 
