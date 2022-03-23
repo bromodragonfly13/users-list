@@ -1,8 +1,10 @@
 jQuery(function($){
 
+    var user_id;
+
     $(document).on('click', '.delete-user-button', function(){
 
-        var user_id = $(this).attr('data-id');
+        user_id = $(this).attr('data-id');
 
         $('#mainModal').modal('toggle');
         $('.modal-dialog').html (`
@@ -15,7 +17,7 @@ jQuery(function($){
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-            <button type="button" class="btn btn-primary" id="remove-button" data-id="`+user_id+`">Удалить</button>
+            <button type="button" class="btn btn-primary" id="remove-button">Удалить</button>
           </div>
         </div>
         `);
@@ -24,7 +26,6 @@ jQuery(function($){
 
     $(document).on('click', '#remove-button', function(){
 
-        var user_id = $(this).attr('data-id');
 
         let form_data = new FormData();
 
