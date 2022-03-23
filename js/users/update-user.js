@@ -15,7 +15,6 @@ jQuery(function($){
         form_data.append('id', user_id);
 
 
-
         $.ajax({
             url: "users/update.php",
             type : "POST",
@@ -25,11 +24,8 @@ jQuery(function($){
             data : form_data,
             success : function(result) {
                 $('#content_body').empty();
-                $("#f_name_edit").val("");
-                $("#l_name_edit").val("");
-                $("#status_edit").val("");
-                $("#role_edit").val("");
-                $('#editModal').modal('toggle');
+                $('#mainModal').modal('toggle');
+                $('.modal-dialog').html('');
                 showUsers();
             },
             error: function(xhr, resp, text) {
