@@ -98,6 +98,26 @@ class User{
         return false;
     }
 
+    public function updateStatus()
+    {
+        $query = "UPDATE ".$this->db_table." SET 
+        status = :status 
+        WHERE id = :id";
+
+        $stmt = $this->conn->prepare($query);
+
+        $this->status=htmlspecialchars(strip_tags($this->status));
+
+        $stmt->bindParam(':status', $this->status);
+        $stmt->bindParam(':id', $this->id);
+
+        if ($stmt->execute()) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function delete(){
 
         $query = "DELETE FROM " . $this->db_table . " WHERE id = ?";

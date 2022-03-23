@@ -10,8 +10,8 @@ function showUsers(){
         <td class="align-middle">
         <div
             class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
-            <input type="checkbox" class="custom-control-input" id="item-1">
-            <label class="custom-control-label" for="item-1"></label>
+            <input type="checkbox" class="custom-control-input item-checkbox" id="item-`+val.id+`" data-id="`+val.id+`">
+            <label class="custom-control-label" for="item-`+val.id+`"></label>
         </div>
         </td>
         <td class="text-nowrap align-middle">`+ val.l_name + ` `+val.f_name+`</td>
@@ -28,16 +28,15 @@ function showUsers(){
         }
 
         read_products_html += `</span></td>
-        <td class="text-center align-middle"><i class="fa fa-circle`; 
+        <td class="text-center align-middle"><i class="fa fa-circle `; 
 
         if(val.status==1){
-            read_products_html += ` active-circle `;
+            read_products_html += `active-circle`;
         } else{
-            read_products_html += ` not-active-circle `;
+            read_products_html += `not-active-circle`;
         }
         
-        read_products_html += `
-        "></i></td>
+        read_products_html += `"></i></td>
         <td class="text-center align-middle">
         <div class="btn-group align-top">
             <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-toggle="modal"

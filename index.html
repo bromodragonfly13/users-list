@@ -6,7 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script></head>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
 <body>
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
@@ -17,19 +19,36 @@
           <div class="col mb-3">
             <div class="e-panel card">
               <div class="card-body">
-                <div class="mb-2">
-                  <div id='add-user' class='btn btn-success pull-right m-b-15px add-user-button ml-2 create-user-button' data-toggle="modal" data-target="#createModal">
-                    Добавить
+                <div class="row">
+                  <div class="col-6">
+                    <h6 class=""><span>Users</span></h6>
                   </div>
-                </div>
-                <div class="card-title">
-                  <h6 class="mr-2"><span>Users</span></h6>
-                  
-                </div>
-                
-                  <div id="app">
+                  <div class="bold switch_text" hidden>
+                    <h6><span>Active:</span></h6>
+                  </div>
+                  <div class="col-2">
 
+                    <label class="switch" hidden>
+                      <input type="checkbox" class="switch_checkbox">
+                      <span class="slider round"></span>
+                    </label>
                   </div>
+                  <div class="col-1">
+                    <div id='add-user' class='btn btn-danger pull-right m-b-15px add-user-button ml-2 delete-all-user-button' hidden>
+                      Удалить
+                    </div>
+                  </div>
+                  <div class="col-2">
+                    <div id='add-user' class='btn btn-success pull-right m-b-15px add-user-button ml-2 create-user-button' data-toggle="modal" data-target="#createModal">
+                      Добавить
+                    </div>
+                  </div>
+
+                </div>
+                <div id="app">
+                    
+
+                </div>
               </div>
             </div>
           </div>
@@ -165,5 +184,70 @@
   <script src="js/users/update-user.js"></script>
   <script src="js/users/delete-user.js"></script>
   <script src="js/users/create-user.js"></script>
+  <script src="dist/jquery.simple-checkbox-table.min.js"></script>
+  <script src="js/users/update-all.js"></script>
+  <style>
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
+    
+    /* Hide default HTML checkbox */
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    /* The slider */
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+    
+    input:checked + .slider {
+      background-color: #2196F3;
+    }
+    
+    input:focus + .slider {
+      box-shadow: 0 0 1px #2196F3;
+    }
+    
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+    
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+    
+    .slider.round:before {
+      border-radius: 50%;
+    }
+  </style>
 </body>
 </html>

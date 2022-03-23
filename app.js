@@ -1,7 +1,7 @@
 jQuery(function($){
 
     app_html = `
-    <div class="e-table">
+    <div class="e-table table-hover">
     <div class="table-responsive table-lg mt-3">
       <table class="table table-bordered">
         <thead>
