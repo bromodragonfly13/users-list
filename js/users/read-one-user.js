@@ -55,6 +55,9 @@ function showOneUser(user_id){
           </div>
         </div>
       </div>
+      <div class="alert alert-danger errors" hidden>
+         Ошибка
+    </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
         <button type="submit" class="btn btn-primary" id="update-user-button">Обновить</button>
@@ -83,7 +86,8 @@ function showOneUser(user_id){
 
         },
         error: function(xhr, resp, text) {
-            console.log(xhr, resp, text);
+            $('.errors').attr('hidden', false);
+            $('.errors').html(xhr.responseJSON.message);
         }
     });
 }
