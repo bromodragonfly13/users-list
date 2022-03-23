@@ -48,9 +48,6 @@ $(document).ready(function() {
                 }
             });
         });
-
-
-        checkedInput = [];
         
         $('input:checked').prop('checked', false);
         $('#content_body').empty();
@@ -96,7 +93,6 @@ $(document).ready(function() {
             });
         });
 
-        checkedInput = [];
         $('input:checked').prop('checked', false);
         $('#content_body').empty();
         hideButtons();
@@ -115,13 +111,6 @@ $(document).ready(function() {
         } else{
             $('.switch_checkbox').prop('checked', false);
         }
-        if($('.active-circle').length > checkedInput.length){
-            $('.switch_checkbox').prop('checked', true);
-        }
-        if($('.active-circle').length == 0){
-            $('.switch_checkbox').prop('checked', false);
-        }
-
 
     }
     function hideButtons(){
