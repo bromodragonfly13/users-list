@@ -98,18 +98,18 @@ class User{
         return false;
     }
 
-    public function updateStatus()
+    public function updateRole()
     {
         $query = "UPDATE ".$this->db_table." SET 
-        status = :status 
+        role = :role 
         WHERE id = :id";
 
         $stmt = $this->conn->prepare($query);
 
-        $this->status=htmlspecialchars(strip_tags($this->status));
+        $this->role=htmlspecialchars(strip_tags($this->role));
         $this->id=htmlspecialchars(strip_tags($this->id));
 
-        $stmt->bindParam(':status', $this->status);
+        $stmt->bindParam(':role', $this->role);
         $stmt->bindParam(':id', $this->id);
 
         if ($stmt->execute()) {

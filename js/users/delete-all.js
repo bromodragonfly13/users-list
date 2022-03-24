@@ -1,10 +1,6 @@
 $(document).ready(function() {
 
-    
-    $("table").simpleCheckboxTable();
-
-    var checkedInput = [];
-
+    let checkedInput = [];
 
     $('#all-items').change(function() {
         checkedInput = [];
@@ -13,7 +9,10 @@ $(document).ready(function() {
                 checkedInput.push($(el).attr('data-id'));
             });
         }
+
+
     });
+
 
     $(document).on("change", ".item-checkbox", function () {
         checkedInput = [];
@@ -26,13 +25,16 @@ $(document).ready(function() {
 
     });
 
-    $(document).on('click', '.update-all-user-button', function(){
-        if($(".role_all").val() == 0){
+
+    $(document).on('click', '.delete-all-user-button', function(){
+
+
+        if(checkedInput.length == 0){
             $('#mainModal').modal('toggle');
             $('.modal-dialog').html (`
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="mainModalLabel">Изменить роль</h5>
+                <h5 class="modal-title" id="mainModalLabel">Удалить пользователей</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -45,19 +47,15 @@ $(document).ready(function() {
               </div>
             </div>
             `);
-        } 
+        }
         else{
-
-            console.log($(".role_all").val())
-
             checkedInput.forEach(function(user_id) {
 
                 let form_data = new FormData();
                 form_data.append('id', user_id);
-                form_data.append('role', $(".role_all").val());
     
                 $.ajax({
-                    url: "users/update_role.php",
+                    url: "users/delete.php",
                     type : "POST",
                     contentType: false,
                     processData: false,
@@ -75,13 +73,19 @@ $(document).ready(function() {
             $('input:checked').prop('checked', false);
             $('#content_body').empty();
             showUsers();
+    
+
         }
-    });
-
-    $(document).on("change", ".role_all", function () {
-                $('.role_all').prop('value', $('.role_all').val());
-
 
     });
+
+    
+
+
+
+
+
+
+
 
 });
