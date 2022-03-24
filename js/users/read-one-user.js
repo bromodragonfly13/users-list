@@ -41,15 +41,14 @@ function showOneUser(user_id){
                       <option value="3">Admin</option>
                     </select>
                   </div>
+                  <div class="mt-2">
                   <label for="">Status: </label>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input status" type="radio" name="status" id="statusRadio1" value="1">
-                    <label class="form-check-label" for="statusRadio1">Active</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input status" type="radio" name="status" id="statusRadio0" value="0">
-                    <label class="form-check-label" for="statusRadio2">Disabled</label>
-                  </div>
+                  <div class="form-check form-check-inline ml-2">
+                    <label class="switch">
+                    <input type="checkbox" class="switch_checkbox">
+                    <span class="slider round"></span>
+                  </label>
+                </div>
                 </div>
               </div>
           </div>
@@ -81,7 +80,11 @@ function showOneUser(user_id){
             $("#f_name").val(result.f_name);
             $("#l_name").val(result.l_name);
             $("#role").val(result.role).change();
-            $("#statusRadio"+result.status).prop("checked", true);
+            if(result.status == 1){
+              $(".switch_checkbox").prop("checked", true);
+            } else{
+              $(".switch_checkbox").prop("checked", false);
+            }
 
 
         },

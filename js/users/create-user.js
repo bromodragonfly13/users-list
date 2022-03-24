@@ -2,6 +2,8 @@ jQuery(function($){
 
     $(document).on('click', '.create-user-button', function(e){
 
+      $('.switch_checkbox').prop('checked', false);
+
         $('#mainModal').modal('toggle');
         $('.modal-dialog').html (`
         <form action="" id="myCreateForm">
@@ -39,16 +41,15 @@ jQuery(function($){
                           <option value="3">Admin</option>
                         </select>
                       </div>
-                      <label for="">Status: </label>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status" id="statusRadio1" value="1">
-                        <label class="form-check-label" for="statusRadio1">Active</label>
+                      <div class="mt-2">
+                        <label for="">Status: </label>
+                        <div class="form-check form-check-inline ml-2">
+                          <label class="switch">
+                          <input type="checkbox" class="switch_checkbox">
+                          <span class="slider round"></span>
+                        </label>
                       </div>
-                      <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status" id="statusRadio2" value="0" checked>
-                        <label class="form-check-label" for="statusRadio2">Disabled</label>
                       </div>
-                    </div>
                   </div>
               </div>
             </div>
@@ -71,6 +72,14 @@ jQuery(function($){
         e.preventDefault();
 
         let form_data = new FormData(document.getElementById("myCreateForm"));
+
+       if($('.switch_checkbox').prop('checked') == true){
+        form_data.append('status', 1);
+       } else{
+        form_data.append('status', 0);
+       }
+
+
 
 
         $.ajax({

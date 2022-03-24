@@ -15,6 +15,12 @@ jQuery(function($){
 
         form_data.append('id', user_id);
 
+        if($('.switch_checkbox').prop('checked') == true){
+            form_data.append('status', 1);
+           } else{
+            form_data.append('status', 0);
+        }
+
 
         $.ajax({
             url: "users/update.php",
