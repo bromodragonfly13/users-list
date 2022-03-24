@@ -107,6 +107,7 @@ class User{
         $stmt = $this->conn->prepare($query);
 
         $this->status=htmlspecialchars(strip_tags($this->status));
+        $this->id=htmlspecialchars(strip_tags($this->id));
 
         $stmt->bindParam(':status', $this->status);
         $stmt->bindParam(':id', $this->id);
@@ -118,7 +119,8 @@ class User{
         return false;
     }
 
-    public function delete(){
+    public function delete()
+    {
 
         $query = "DELETE FROM " . $this->db_table . " WHERE id = ?";
 
@@ -132,6 +134,23 @@ class User{
         }
 
         return false;
+
+    }
+
+    public function checkUserById()
+    {
+        $query = 'SELECT * FROM '.$this->db_table.' WHERE id=?';
+        $this->id=htmlspecialchars(strip_tags($this->id));
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute([$this->id]);
+        $user= $stmt->fetch();
+
+        if($user){
+            return true;
+        }
+
+
+        return $user;
 
     }
 }
