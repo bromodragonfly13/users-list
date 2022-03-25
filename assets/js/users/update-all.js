@@ -38,7 +38,7 @@ $(document).ready(function() {
                 </button>
               </div>
               <div class="alert alert-danger errors" >
-                Пустой список
+                Не выбрана роль
              </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
