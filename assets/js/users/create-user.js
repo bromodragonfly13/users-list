@@ -43,7 +43,7 @@ jQuery(function($){
               <td class="align-middle">
                 <div
                   class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
-                  <input type="checkbox" class="custom-control-input" id="item-`+result.id+`">
+                  <input type="checkbox" class="custom-control-input item-checkbox" id="item-`+result.id+`" data-id="`+result.id+`">
                   <label class="custom-control-label" for="item-`+result.id+`"></label>
                 </div>
               </td>

@@ -104,7 +104,7 @@
                           <td class="align-middle">
                             <div
                               class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
-                              <input type="checkbox" class="custom-control-input" id="item-<?=$item['id'] ?>">
+                              <input type="checkbox" class="custom-control-input item-checkbox" id="item-<?=$item['id'] ?>" data-id="<?=$item['id'] ?>">
                               <label class="custom-control-label" for="item-<?=$item['id'] ?>"></label>
                             </div>
                           </td>
@@ -151,10 +151,10 @@
                   <div class="col-2">
                     <div class="form-group">
                       <select class="form-control role_all" name="role_all">
-                        <option value="0" selected>Please Select</option>
-                        <option value="1">Active</option>
-                        <option value="2">User</option>
-                        <option value="3">Admin</option>
+                      <option value="0" selected>Please Select</option>
+                        <option value="1">Set active</option>
+                        <option value="2">Set not active</option>
+                        <option value="3">Delete</option>
                       </select>
                     </div>
                   </div>
@@ -263,7 +263,6 @@
   <script src="assets/js/users/update-user.js"></script>
   <script src="assets/js/users/delete-user.js"></script>
   <script src="assets/js/users/create-user.js"></script>
-  <script src="dist/jquery.simple-checkbox-table.min.js"></script>
   <script src="assets/js/users/update-all.js"></script>
   <script src="assets/js/users/delete-all.js"></script>
   <style>

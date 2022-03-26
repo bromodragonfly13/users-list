@@ -1,7 +1,9 @@
 $(document).ready(function() {
 
-    
-    $("table").simpleCheckboxTable();
+    $('.item-checkbox').each(function(id, el) {
+        $(this).prop('checked', false);
+    });
+    $('#all-items').prop('checked', false);
 
     var checkedInput = [];
 
@@ -11,8 +13,17 @@ $(document).ready(function() {
         if(this.checked) {
             $('.item-checkbox').each(function(id, el) {
                 checkedInput.push($(el).attr('data-id'));
+                $(this).prop('checked', true);
             });
         }
+        else{
+            checkedInput = [];
+            $('.item-checkbox').each(function(id, el) {
+                $(this).prop('checked', false);
+            });
+        }
+        console.log(checkedInput)
+
     });
 
     $(document).on("change", ".item-checkbox", function () {
@@ -20,9 +31,21 @@ $(document).ready(function() {
             $('.item-checkbox').each(function(id, el) {
                 if(this.checked) {
                     checkedInput.push($(el).attr('data-id'));
+
                 }
             });
 
+            $('.item-checkbox').each(function(id, el) {
+                if(this.checked) {
+                    $('#all-items').prop('checked', true);
+
+                }
+                else{
+                    $('#all-items').prop('checked', false);
+                    return false;
+                }
+            });
+            console.log(checkedInput)
 
     });
 
