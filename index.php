@@ -173,6 +173,7 @@
             
           </div>
         </div>
+
         <!-- User Form Modal -->
         <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
           <div class="modal-dialog modal-lg" role="document">
@@ -230,13 +231,33 @@
                 <button type="submit" class="btn btn-primary" id="update-user-button">Обновить</button>
             </div>
             </div>
-        </form> 
-        
+          </form> 
           </div>
         </div>
       </div>
-    </div>
+
+      <div class="modal" tabindex="-1" role="dialog" id="message-modal">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="message-modal-title"></h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body" id="message-modal-body">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="remove-button">Delete</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
   </div>
+
+  
   <script src="assets/js/app.js"></script>
   <script src="assets/js/users/read-one-user.js"></script>
   <script src="assets/js/users/update-user.js"></script>

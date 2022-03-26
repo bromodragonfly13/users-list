@@ -6,21 +6,9 @@ jQuery(function($){
 
         user_id = $(this).attr('data-id');
 
-        $('#mainModal').modal('toggle');
-        $('.modal-dialog').html (`
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="mainModalLabel">Удалить пользователя</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-            <button type="button" class="btn btn-primary" id="remove-button">Удалить</button>
-          </div>
-        </div>
-        `);
+        $('#message-modal').modal('toggle');
+        $('#message-modal-title').html('Delete user');
+        $('#message-modal-body').html('<p>Modal body text goes here.</p>');
 
     });
 
@@ -41,10 +29,9 @@ jQuery(function($){
             cache: false,
             data : form_data,
             success : function(result) {
-                $('#content_body').empty();
-                $('#mainModal').modal('toggle');
-                $('.modal-dialog').html('');
-                showUsers();
+                $('#message-modal').modal('toggle');
+                $('#record-'+user_id).empty();
+
             },
             error: function(xhr, resp, text) {
                 console.log(xhr, resp, text);
