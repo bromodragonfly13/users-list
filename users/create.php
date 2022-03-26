@@ -62,7 +62,18 @@ if (
 
         http_response_code(201);
 
-        echo json_encode(array("message" => "Пользователь быо создан."), JSON_UNESCAPED_UNICODE);
+        $query  = $db->query("SELECT LAST_INSERT_ID()");
+        $id = $query->fetchColumn();
+
+        $user = array(
+            "id" => $id,
+            "f_name" => $user->f_name,
+            "l_name" => $user->l_name,
+            "role" => $user->role,
+            "status" => $user->status
+        );
+
+        echo json_encode($user);
 
 
     } 

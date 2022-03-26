@@ -4,66 +4,7 @@ jQuery(function($){
 
       $('.switch_checkbox').prop('checked', false);
 
-        $('#mainModal').modal('toggle');
-        $('.modal-dialog').html (`
-        <form action="" id="myCreateForm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="mainModalLabel">Новый пользователь</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="modal-body">
-              <div class="py-1">
-                  <div class="row">
-                    <div class="col">
-                      <div class="row">
-                        <div class="col">
-                          <div class="form-group">
-                            <label>First Name</label>
-                            <input class="form-control" type="text" name="f_name" id="f_name" required>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label>Last name</label>
-                            <input class="form-control" type="text" name="l_name" id="l_name" required>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleFormControlSelect1">Example select</label>
-                        <select class="form-control" id="" name="role">
-                          <option value="1" checked>Active</option>
-                          <option value="2">User</option>
-                          <option value="3">Admin</option>
-                        </select>
-                      </div>
-                      <div class="mt-2">
-                        <label for="">Status: </label>
-                        <div class="form-check form-check-inline ml-2">
-                          <label class="switch">
-                          <input type="checkbox" class="switch_checkbox">
-                          <span class="slider round"></span>
-                        </label>
-                      </div>
-                      </div>
-                  </div>
-              </div>
-            </div>
-          </div>
-          <div class="alert alert-danger errors" hidden>
-            Ошибка
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
-            <button type="submit" class="btn btn-primary" id="store-user-button">Добавить</button>
-          </div>
-        </div>
-      </form> 
-        `);
+      $('#user-form-modal').modal('toggle');
 
     });
 
@@ -71,7 +12,7 @@ jQuery(function($){
         
         e.preventDefault();
 
-        let form_data = new FormData(document.getElementById("myCreateForm"));
+        let form_data = new FormData(document.getElementById("userForm"));
 
        if($('.switch_checkbox').prop('checked') == true){
         form_data.append('status', 1);
@@ -90,10 +31,55 @@ jQuery(function($){
             cache: false,
             data : form_data,
             success : function(result) {
-              $('#content_body').empty();
               $('#mainModal').modal('toggle');
-              $('.modal-dialog').html('');
-              showUsers();
+              
+              let user_item = `
+              <tr>
+              <td class="align-middle">
+                <div
+                  class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
+                  <input type="checkbox" class="custom-control-input" id="item-`+result.id+`">
+                  <label class="custom-control-label" for="item-`+result.id+`"></label>
+                </div>
+              </td>
+              <td class="text-nowrap align-middle">`+result.l_name+' '+result.f_name+`</td>
+              <td class="text-nowrap align-middle"><span>`;
+               if(result.role == 1){
+                user_item += 'Active';
+               }
+               if(result.role == 2){
+                user_item += 'User';
+               }
+               if(result.role == 3){
+                user_item += 'Admin';
+               }
+
+
+              user_item += `</span></td>
+              <td class="text-center align-middle"><i class="fa fa-circle `;
+              if(result.status == 1){
+                user_item +=  'active-circle';
+              }
+              else {
+                user_item +=  'not-active-circle';
+              }
+               
+              user_item += `"></i></td>
+              <td class="text-center align-middle">
+                <div class="btn-group align-top">
+                  <button class="btn btn-sm btn-outline-secondary badge" type="button">Edit</button>
+                  <button class="btn btn-sm btn-outline-secondary badge" type="button"><i
+                      class="fa fa-trash"></i></button>
+                </div>
+              </td>
+            </tr>
+              `;
+
+              $('tbody').append(user_item);
+              $('#user-form-modal').modal('toggle');
+
+
+
             },
             error: function(xhr, resp, text) {
                 $('.errors').attr('hidden', false);
@@ -101,8 +87,7 @@ jQuery(function($){
             }
         });
 
-        $('#createModal').modal('toggle');
-
     });
-    return false;
+    
+
 });
