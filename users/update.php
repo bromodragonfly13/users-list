@@ -75,7 +75,18 @@ if(isset($_POST['id'])){
     if($user->update()){
 
         http_response_code(200);
-        echo json_encode(array("message" => "Успех."), JSON_UNESCAPED_UNICODE);
+
+        $user = array(
+            "id" => $user->id,
+            "f_name" => $user->f_name,
+            "l_name" => $user->l_name,
+            "role" => $user->role,
+            "status" => $user->status
+        );
+
+        echo json_encode($user);
+
+
 
     }
 

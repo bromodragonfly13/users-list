@@ -3,6 +3,11 @@ jQuery(function($){
     $(document).on('click', '.create-user-button', function(e){
 
       $('.switch_checkbox').prop('checked', false);
+      $('#update-user-button').attr('hidden', true);
+      $('#store-user-button').attr('hidden', false);
+      $('#f_name').val('');
+      $('#l_name').val('');
+      $('#mainModalLabel').text('Create user');
 
       $('#user-form-modal').modal('toggle');
 
@@ -34,7 +39,7 @@ jQuery(function($){
               $('#mainModal').modal('toggle');
               
               let user_item = `
-              <tr>
+              <tr id="record-`+result.id+`">
               <td class="align-middle">
                 <div
                   class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
@@ -67,7 +72,7 @@ jQuery(function($){
               user_item += `"></i></td>
               <td class="text-center align-middle">
                 <div class="btn-group align-top">
-                  <button class="btn btn-sm btn-outline-secondary badge" type="button">Edit</button>
+                  <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-id="`+result.id+`">Edit</button>
                   <button class="btn btn-sm btn-outline-secondary badge" type="button"><i
                       class="fa fa-trash"></i></button>
                 </div>

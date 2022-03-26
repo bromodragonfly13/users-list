@@ -100,7 +100,7 @@
                       <tbody>
 
                         <?php foreach($users_arr['records'] as $item): ?>
-                        <tr>
+                        <tr id="record-<?=$item['id'] ?>">
                           <td class="align-middle">
                             <div
                               class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
@@ -131,8 +131,8 @@
                           ?>"></i></td>
                           <td class="text-center align-middle">
                             <div class="btn-group align-top">
-                              <button class="btn btn-sm btn-outline-secondary badge" type="button">Edit</button>
-                              <button class="btn btn-sm btn-outline-secondary badge" type="button"><i
+                              <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-id="<?=$item['id'] ?>">Edit</button>
+                              <button class="btn btn-sm btn-outline-secondary badge delete-user-button" type="button" data-id="<?=$item['id'] ?>"><i
                                   class="fa fa-trash"></i></button>
                             </div>
                           </td>
@@ -179,7 +179,7 @@
             <form action="" id="userForm">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="mainModalLabel">Новый пользователь</h5>
+                <h5 class="modal-title" id="mainModalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -204,7 +204,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Example select</label>
-                            <select class="form-control" id="" name="role">
+                            <select class="form-control" id="role" name="role">
                             <option value="1" checked>Active</option>
                             <option value="2">User</option>
                             <option value="3">Admin</option>
@@ -227,6 +227,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                 <button type="submit" class="btn btn-primary" id="store-user-button">Добавить</button>
+                <button type="submit" class="btn btn-primary" id="update-user-button">Обновить</button>
             </div>
             </div>
         </form> 
