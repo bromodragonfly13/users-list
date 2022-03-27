@@ -60,7 +60,7 @@
                   </div>
                   <div class="col-2">
                     <div class="form-group">
-                      <select class="form-control role_all" name="role_all">
+                      <select class="form-control action-all" name="action_all" id="one-action">
                         <option value="0" selected>Please Select</option>
                         <option value="1">Set active</option>
                         <option value="2">Set not active</option>
@@ -69,7 +69,7 @@
                     </div>
                   </div>
                   <div class="col-1">
-                    <div id='add-user' class='btn btn-primary pull-right m-b-15px add-user-button ml-2 update-all-user-button'>
+                    <div id='update-all-button' class='btn btn-primary pull-right m-b-15px add-user-button ml-2 update-all-user-button'>
                       <div>OK</div>
                     </div>
                   </div>
@@ -128,7 +128,7 @@
                               echo 'not-active-circle';
                           }
                            
-                          ?>"></i></td>
+                          ?>" id="<?='status-'.$item['id'] ?>"></i></td>
                           <td class="text-center align-middle">
                             <div class="btn-group align-top">
                               <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-id="<?=$item['id'] ?>">Edit</button>
@@ -149,9 +149,9 @@
                     <h6 class=""><span></span></h6>
                   </div>
                   <div class="col-2">
-                    <div class="form-group">
-                      <select class="form-control role_all" name="role_all">
-                      <option value="0" selected>Please Select</option>
+                  <div class="form-group">
+                      <select class="form-control action-all" name="action_all" id="two-action"> 
+                        <option value="0" selected>Please Select</option>
                         <option value="1">Set active</option>
                         <option value="2">Set not active</option>
                         <option value="3">Delete</option>
@@ -159,7 +159,7 @@
                     </div>
                   </div>
                   <div class="col-1">
-                    <div id='add-user' class='btn btn-primary pull-right m-b-15px add-user-button ml-2 update-all-user-button'>
+                    <div id='update-all-button' class='btn btn-primary pull-right m-b-15px add-user-button ml-2 update-all-user-button'>
                       <div>OK</div>
                     </div>
                   </div>
@@ -248,7 +248,6 @@
             <div class="modal-body" id="message-modal-body">
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" id="remove-button">Delete</button>
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
           </div>
@@ -258,13 +257,10 @@
   </div>
 
   
-  <script src="assets/js/app.js"></script>
-  <script src="assets/js/users/read-one-user.js"></script>
   <script src="assets/js/users/update-user.js"></script>
   <script src="assets/js/users/delete-user.js"></script>
   <script src="assets/js/users/create-user.js"></script>
   <script src="assets/js/users/update-all.js"></script>
-  <script src="assets/js/users/delete-all.js"></script>
   <style>
     .switch {
       position: relative;

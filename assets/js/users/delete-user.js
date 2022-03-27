@@ -9,6 +9,8 @@ jQuery(function($){
         $('#message-modal').modal('toggle');
         $('#message-modal-title').html('Delete user');
         $('#message-modal-body').html('<p>Modal body text goes here.</p>');
+        $('#remove-button').attr('hidden', false);
+
 
     });
 

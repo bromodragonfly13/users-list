@@ -21,7 +21,6 @@ jQuery(function($){
             cache: false,
             data : form_data,
             success : function(result) {
-                console.log(result.role)
                 $('#user-form-modal').modal('toggle');
                 $("#f_name").val(result.f_name);
                 $("#l_name").val(result.l_name);
@@ -99,7 +98,7 @@ jQuery(function($){
                   user_item +=  'not-active-circle';
                 }
                  
-                user_item += `"></i></td>
+                user_item += `" id="status-`+result.id+`"></i></td>
                 <td class="text-center align-middle">
                   <div class="btn-group align-top">
                     <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-id="`+result.id+`">Edit</button>

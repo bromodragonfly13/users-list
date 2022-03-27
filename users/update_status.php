@@ -17,28 +17,40 @@ $user = new User($db);
 if(isset($_POST['id'])){
 
     
-    if (isset($_POST['role'])) {
+    if (isset($_POST['status'])) {
         $user->id = $_POST['id'];
-        $user->role = $_POST['role'];
+        $user->status = $_POST['status'];
     } else{
 
         http_response_code(400);
 
-        echo json_encode(array("message" => " Укажите роль."), JSON_UNESCAPED_UNICODE);
+        echo json_encode(array("message" => " Укажите статус."), JSON_UNESCAPED_UNICODE);
         die();
     }
 
-    if(!preg_match("/^[1-3]*$/", $user->role)) {
+    if(!$user->checkUserById()){
         http_response_code(400);
 
-        echo json_encode(array("message" => "Некоректная роль. Доступные варианты : 1 - active, 3 - user, 3 - admin"), JSON_UNESCAPED_UNICODE);
+        echo json_encode(array("message" => "Пользователь не найден"), JSON_UNESCAPED_UNICODE);
         die();
     }
 
-    if($user->updateRole()){
+    if(!preg_match("/^[0-1]*$/", $user->status)) {
+        http_response_code(400);
+
+        echo json_encode(array("message" => "Некоректная статус. Доступные варианты : 1 - active, 0 - not active"), JSON_UNESCAPED_UNICODE);
+        die();
+    }
+
+    if($user->updateStatus()){
 
         http_response_code(200);
-        echo json_encode(array("message" => "Успех."), JSON_UNESCAPED_UNICODE);
+        $user = array(
+            "id" => $user->id,
+            "status" => $user->status
+        );
+
+        echo json_encode($user);
 
     }
 
