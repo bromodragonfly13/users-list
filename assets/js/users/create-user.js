@@ -37,29 +37,30 @@ jQuery(function($){
             data : form_data,
             success : function(result) {
               $('#mainModal').modal('toggle');
-              
+              let user = result.user;
+
               let user_item = `
-              <tr id="record-`+result.id+`">
+              <tr id="record-`+user.id+`">
               <td class="align-middle">
                 <div
                   class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
-                  <input type="checkbox" class="custom-control-input item-checkbox" id="item-`+result.id+`" data-id="`+result.id+`">
-                  <label class="custom-control-label" for="item-`+result.id+`"></label>
+                  <input type="checkbox" class="custom-control-input item-checkbox" id="item-`+user.id+`" data-id="`+user.id+`">
+                  <label class="custom-control-label" for="item-`+user.id+`"></label>
                 </div>
               </td>
-              <td class="text-nowrap align-middle" id="name-`+result.id+`">`+result.l_name+' '+result.f_name+`</td>
-              <td class="text-nowrap align-middle" id="role-`+result.id+`"><span>`;
-               if(result.role == 1){
+              <td class="text-nowrap align-middle" id="name-`+user.id+`">`+user.l_name+' '+user.f_name+`</td>
+              <td class="text-nowrap align-middle" id="role-`+user.id+`"><span>`;
+               if(user.role == 1){
                 user_item += 'User';
                }
-               if(result.role == 2){
+               if(user.role == 2){
                 user_item += 'Admin';
                }
 
 
               user_item += `</span></td>
               <td class="text-center align-middle"><i class="fa fa-circle `;
-              if(result.status == 1){
+              if(user.status == 1){
                 user_item +=  'active-circle';
               }
               else {
@@ -69,7 +70,7 @@ jQuery(function($){
               user_item += `"></i></td>
               <td class="text-center align-middle">
                 <div class="btn-group align-top">
-                  <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-id="`+result.id+`">Edit</button>
+                  <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-id="`+user.id+`">Edit</button>
                   <button class="btn btn-sm btn-outline-secondary badge" type="button"><i
                       class="fa fa-trash"></i></button>
                 </div>
@@ -85,7 +86,8 @@ jQuery(function($){
             },
             error: function(xhr, resp, text) {
                 $('.errors').attr('hidden', false);
-                $('.errors').html(xhr.responseJSON.message);
+                console.log(xhr.responseJSON.error.message);
+                $('.errors').html(xhr.responseJSON.error.message);
             }
         });
 

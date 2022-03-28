@@ -31,28 +31,62 @@ if (
     if(!preg_match("/^[a-zA-Zа-яА-Я]+$/u", $user->f_name)) {
         http_response_code(400);
 
-        echo json_encode(array("message" => "Некоректные данные имени."), JSON_UNESCAPED_UNICODE);
+        $error = array(
+            "status" => false,
+            "error" => array(
+                "code" => "105",
+                "message" => "Incorrect first name"
+            ),
+        );
+
+        echo json_encode($error, JSON_UNESCAPED_UNICODE);
+
         die();
     }
 
     if(!preg_match("/^[a-zA-Zа-яА-Я]+$/u", $user->l_name)) {
         http_response_code(400);
 
-        echo json_encode(array("message" => "Некоректные данные фамилии."), JSON_UNESCAPED_UNICODE);
+        $error = array(
+            "status" => false,
+            "error" => array(
+                "code" => "104",
+                "message" => "Incorrect last name"
+            ),
+        );
+
+        echo json_encode($error, JSON_UNESCAPED_UNICODE);
         die();
     } 
 
     if(!preg_match("/^[0-1]*$/", $user->status)) {
         http_response_code(400);
 
-        echo json_encode(array("message" => "Некоректный статус. Доступные варианты : 1 - active, 0 - not active"), JSON_UNESCAPED_UNICODE);
+        $error = array(
+            "status" => false,
+            "error" => array(
+                "code" => "103",
+                "message" => "Incorrect status"
+            ),
+        );
+
+        echo json_encode($error, JSON_UNESCAPED_UNICODE);
+
         die();
     } 
 
     if(!preg_match("/^[1-2]*$/", $user->role)) {
         http_response_code(400);
 
-        echo json_encode(array("message" => "Некоректная роль. Доступные варианты : 1 - user, 2 - admin"), JSON_UNESCAPED_UNICODE);
+        $error = array(
+            "status" => false,
+            "error" => array(
+                "code" => "102",
+                "message" => "Incorrect role"
+            ),
+        );
+
+        echo json_encode($error, JSON_UNESCAPED_UNICODE);
         die();
     } 
 
@@ -66,11 +100,15 @@ if (
         $id = $query->fetchColumn();
 
         $user = array(
-            "id" => $id,
-            "f_name" => $user->f_name,
-            "l_name" => $user->l_name,
-            "role" => $user->role,
-            "status" => $user->status
+            "status" => true,
+            "error" => null,
+            "user" => array(
+                "id" => $id,
+                "f_name" => $user->f_name,
+                "l_name" => $user->l_name,
+                "role" => $user->role,
+                "status" => $user->status
+            )
         );
 
         echo json_encode($user);
@@ -81,7 +119,15 @@ if (
 
         http_response_code(503);
 
-        echo json_encode(array("message" => "Ошибка создания пользователя"), JSON_UNESCAPED_UNICODE);
+        $error = array(
+            "status" => false,
+            "error" => array(
+                "code" => "101",
+                "message" => "User creation error"
+            ),
+        );
+
+        echo json_encode($error, JSON_UNESCAPED_UNICODE);
 
     }
 }
@@ -90,7 +136,15 @@ else{
 
     http_response_code(400);
 
-    echo json_encode(array("message" => "Не все данные заполнены."), JSON_UNESCAPED_UNICODE);
+    $error = array(
+        "status" => false,
+        "error" => array(
+            "code" => "100",
+            "message" => "Not all data is complete"
+        ),
+    );
+
+    echo json_encode($error, JSON_UNESCAPED_UNICODE);
 
 
 }
