@@ -47,15 +47,12 @@ jQuery(function($){
                   <label class="custom-control-label" for="item-`+result.id+`"></label>
                 </div>
               </td>
-              <td class="text-nowrap align-middle">`+result.l_name+' '+result.f_name+`</td>
-              <td class="text-nowrap align-middle"><span>`;
+              <td class="text-nowrap align-middle" id="name-`+result.id+`">`+result.l_name+' '+result.f_name+`</td>
+              <td class="text-nowrap align-middle" id="role-`+result.id+`"><span>`;
                if(result.role == 1){
-                user_item += 'Active';
-               }
-               if(result.role == 2){
                 user_item += 'User';
                }
-               if(result.role == 3){
+               if(result.role == 2){
                 user_item += 'Admin';
                }
 

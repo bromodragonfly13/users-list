@@ -108,15 +108,12 @@
                               <label class="custom-control-label" for="item-<?=$item['id'] ?>"></label>
                             </div>
                           </td>
-                          <td class="text-nowrap align-middle"><?= $item['l_name'].' '.$item['f_name'] ?></td>
-                          <td class="text-nowrap align-middle"><span><?php
+                          <td class="text-nowrap align-middle" id="name-<?=$item['id'] ?>"><?= $item['l_name'].' '.$item['f_name'] ?></td>
+                          <td class="text-nowrap align-middle" id="role-<?=$item['id'] ?>"><span><?php
                            if($item['role'] == 1){
-                            echo 'Active';
-                           }
-                           if($item['role'] == 2){
                             echo 'User';
                            }
-                           if($item['role'] == 3){
+                           if($item['role'] == 2){
                             echo 'Admin';
                            }
                            ?></span></td>
@@ -206,9 +203,8 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Example select</label>
                             <select class="form-control" id="role" name="role">
-                            <option value="1" checked>Active</option>
-                            <option value="2">User</option>
-                            <option value="3">Admin</option>
+                            <option value="1" checked>User</option>
+                            <option value="2">Admin</option>
                             </select>
                         </div>
                         <div class="mt-2">

@@ -57,10 +57,10 @@ if(isset($_POST['id'])){
             die();
         } 
     
-        if(!preg_match("/^[1-3]*$/", $user->role)) {
+        if(!preg_match("/^[1-2]*$/", $user->role)) {
             http_response_code(400);
     
-            echo json_encode(array("message" => "Некоректная роль. Доступные варианты : 1 - active, 3 - user, 3 - admin"), JSON_UNESCAPED_UNICODE);
+            echo json_encode(array("message" => "Некоректная роль. Доступные варианты : 1 - user, 2 - admin"), JSON_UNESCAPED_UNICODE);
             die();
         }
 

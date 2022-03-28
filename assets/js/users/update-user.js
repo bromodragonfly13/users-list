@@ -67,49 +67,22 @@ jQuery(function($){
             success : function(result) {
                 $('#user-form-modal').modal('toggle');
 
-                let user_item = `
-                <tr id="record-`+result.id+`">
-                <td class="align-middle">
-                  <div
-                    class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
-                    <input type="checkbox" class="custom-control-input" id="item-`+result.id+`">
-                    <label class="custom-control-label" for="item-`+result.id+`"></label>
-                  </div>
-                </td>
-                <td class="text-nowrap align-middle">`+result.l_name+' '+result.f_name+`</td>
-                <td class="text-nowrap align-middle"><span>`;
-                 if(result.role == 1){
-                  user_item += 'Active';
-                 }
-                 if(result.role == 2){
-                  user_item += 'User';
-                 }
-                 if(result.role == 3){
-                  user_item += 'Admin';
-                 }
-  
-  
-                user_item += `</span></td>
-                <td class="text-center align-middle"><i class="fa fa-circle `;
-                if(result.status == 1){
-                  user_item +=  'active-circle';
-                }
-                else {
-                  user_item +=  'not-active-circle';
-                }
-                 
-                user_item += `" id="status-`+result.id+`"></i></td>
-                <td class="text-center align-middle">
-                  <div class="btn-group align-top">
-                    <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-id="`+result.id+`">Edit</button>
-                    <button class="btn btn-sm btn-outline-secondary badge" type="button"><i
-                        class="fa fa-trash"></i></button>
-                  </div>
-                </td>
-              </tr>
-                `;
+                $('#name-'+result.id).text(result.l_name+' '+result.f_name);
 
-                $('#record-'+result.id).replaceWith(user_item);
+                if(result.status == 1){
+                  $('#status-'+result.id).removeClass('not-active-circle').addClass('active-circle');
+                }
+                else{
+                    $('#status-'+result.id).removeClass('active-circle').addClass('not-active-circle');
+                }
+
+                if(result.role == 1){
+                  $('#role-'+result.id).html('<span>User</span>');
+                }
+                if(result.role == 2){
+                    $('#role-'+result.id).html('<span>Admin</span>');
+                }
+
 
             },
             error: function(xhr, resp, text) {
