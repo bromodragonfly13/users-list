@@ -66,6 +66,7 @@ class User{
         $this->f_name = $row['f_name'];
         $this->role = $row['role'];
         $this->status = $row['status'];
+
     }
 
     public function update()
@@ -140,15 +141,14 @@ class User{
     public function checkUserById()
     {
         $query = 'SELECT * FROM '.$this->db_table.' WHERE id=?';
-        $this->id=htmlspecialchars(strip_tags($this->id));
+        $this->id = htmlspecialchars(strip_tags($this->id));
         $stmt = $this->conn->prepare($query);
         $stmt->execute([$this->id]);
-        $user= $stmt->fetch();
+        $user = $stmt->fetch();
 
         if($user){
             return true;
         }
-
 
         return $user;
 

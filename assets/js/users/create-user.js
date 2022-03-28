@@ -5,6 +5,7 @@ jQuery(function($){
       $('.switch_checkbox').prop('checked', false);
       $('#update-user-button').attr('hidden', true);
       $('#store-user-button').attr('hidden', false);
+      $('.errors').attr('hidden', true);
       $('#f_name').val('');
       $('#l_name').val('');
       $('#mainModalLabel').text('Create user');
@@ -71,7 +72,7 @@ jQuery(function($){
               <td class="text-center align-middle">
                 <div class="btn-group align-top">
                   <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-id="`+user.id+`">Edit</button>
-                  <button class="btn btn-sm btn-outline-secondary badge" type="button"><i
+                  <button class="btn btn-sm btn-outline-secondary badge delete-user-button" type="button" data-id="`+user.id+`"><i
                       class="fa fa-trash"></i></button>
                 </div>
               </td>

@@ -8,7 +8,7 @@ jQuery(function($){
 
         $('#message-modal').modal('toggle');
         $('#message-modal-title').html('Delete user');
-        $('#message-modal-body').html('<p>Modal body text goes here.</p>');
+        $('#message-modal-body').html('<p>Are you sure you want to delete the user?</p>');
         $('#remove-button').attr('hidden', false);
 
 
@@ -20,6 +20,8 @@ jQuery(function($){
         let form_data = new FormData();
 
         form_data.append('id', user_id);
+        console.log(user_id)
+
 
 
         $.ajax({
@@ -32,11 +34,12 @@ jQuery(function($){
             data : form_data,
             success : function(result) {
                 $('#message-modal').modal('toggle');
-                $('#record-'+user_id).empty();
+                let user = result.user;
+                $('#record-'+user.id).empty();
 
             },
             error: function(xhr, resp, text) {
-                console.log(xhr, resp, text);
+                console.log(xhr.responseJSON.error.message);
             }
         });
 

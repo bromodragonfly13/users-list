@@ -201,14 +201,14 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="exampleFormControlSelect1">Example select</label>
+                            <label for="exampleFormControlSelect1">Role</label>
                             <select class="form-control" id="role" name="role">
                             <option value="1" checked>User</option>
                             <option value="2">Admin</option>
                             </select>
                         </div>
                         <div class="mt-2">
-                            <label for="">Status: </label>
+                            <label for="">Status </label>
                             <div class="form-check form-check-inline ml-2">
                             <label class="switch">
                             <input type="checkbox" class="switch_checkbox">
@@ -245,6 +245,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-danger" id="remove-button" hidden>Delete</button>
             </div>
           </div>
         </div>

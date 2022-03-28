@@ -14,31 +14,60 @@ $db = $database->getConnection();
 
 $user = new User($db);
 
-$user->id = isset($_POST['id']) ? $_POST['id'] : die();
 
-$user->readOne();
+if(isset($_POST['id'])){
 
-if($user->f_name!=null){
+    $user->id = $_POST['id'];
+    $user->readOne();
 
-    $user_arr = array(
-        "id" => $user->id,
-        "f_name" => $user->f_name,
-        "l_name" => $user->l_name,
-        "role" => $user->role,
-        "status" => $user->status
+    if($user->f_name!=null){
+
+        $user = array(
+            "status" => true,
+            "error" => null,
+            "user" => array(
+                "id" => $user->id,
+                "f_name" => $user->f_name,
+                "l_name" => $user->l_name,
+                "role" => $user->role,
+                "status" => $user->status
+            )
+        );
+
+        http_response_code(200);
+
+        echo json_encode($user);
+    }
+
+    else{
+
+        http_response_code(404);
+
+        $error = array(
+            "status" => false,
+            "error" => array(
+                "code" => "301",
+                "message" => "User not found"
+            ),
+        );
+    
+        echo json_encode($error, JSON_UNESCAPED_UNICODE);
+        die;
+
+    }
+} else{
+
+    http_response_code(400);
+
+    $error = array(
+        "status" => false,
+        "error" => array(
+            "code" => "300",
+            "message" => "ID not passed"
+        ),
     );
 
-    http_response_code(200);
-
-    echo json_encode($user_arr);
-
-}
-
-else{
-
-    http_response_code(404);
-
-    echo json_encode(array("message" => "Пользователь не существует."), JSON_UNESCAPED_UNICODE);
-
+    echo json_encode($error, JSON_UNESCAPED_UNICODE);
+    die;
 }
 

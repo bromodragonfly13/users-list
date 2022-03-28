@@ -4,6 +4,7 @@ jQuery(function($){
 
         $('#update-user-button').attr('hidden', false);
         $('#store-user-button').attr('hidden', true);
+        $('.errors').attr('hidden', true);
         $('#mainModalLabel').text('Update user');
 
         user_id = $(this).attr('data-id');
@@ -22,10 +23,13 @@ jQuery(function($){
             data : form_data,
             success : function(result) {
                 $('#user-form-modal').modal('toggle');
-                $("#f_name").val(result.f_name);
-                $("#l_name").val(result.l_name);
-                $("#role").val(result.role).change();
-                if(result.status == 1){
+
+                let user = result.user;
+
+                $("#f_name").val(user.f_name);
+                $("#l_name").val(user.l_name);
+                $("#role").val(user.role).change();
+                if(user.status == 1){
                   $(".switch_checkbox").prop("checked", true);
                 } else{
                   $(".switch_checkbox").prop("checked", false);
@@ -67,27 +71,31 @@ jQuery(function($){
             success : function(result) {
                 $('#user-form-modal').modal('toggle');
 
-                $('#name-'+result.id).text(result.l_name+' '+result.f_name);
+                let user = result.user;
+                console.log(user)
 
-                if(result.status == 1){
-                  $('#status-'+result.id).removeClass('not-active-circle').addClass('active-circle');
+                $('#name-'+user.id).text(user.l_name+' '+user.f_name);
+
+                if(user.status == 1){
+                  $('#status-'+user.id).removeClass('not-active-circle').addClass('active-circle');
                 }
-                else{
-                    $('#status-'+result.id).removeClass('active-circle').addClass('not-active-circle');
+                if(user.status == 0){
+                    $('#status-'+user.id).removeClass('active-circle').addClass('not-active-circle');
                 }
 
-                if(result.role == 1){
-                  $('#role-'+result.id).html('<span>User</span>');
+                if(user.role == 1){
+                  $('#role-'+user.id).html('<span>User</span>');
                 }
-                if(result.role == 2){
-                    $('#role-'+result.id).html('<span>Admin</span>');
+                if(user.role == 2){
+                    $('#role-'+user.id).html('<span>Admin</span>');
                 }
 
 
             },
             error: function(xhr, resp, text) {
                 $('.errors').attr('hidden', false);
-                $('.errors').html(xhr.responseJSON.message);
+                console.log(xhr.responseJSON.error.message);
+                $('.errors').html(xhr.responseJSON.error.message);
             }
         });
 
