@@ -203,7 +203,7 @@
                         <div class="form-group">
                             <label for="exampleFormControlSelect1">Role</label>
                             <select class="form-control" id="role" name="role">
-                            <option value="1" checked>User</option>
+                            <option value="1" selected>User</option>
                             <option value="2">Admin</option>
                             </select>
                         </div>
