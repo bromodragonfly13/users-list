@@ -104,7 +104,7 @@
                           <td class="align-middle">
                             <div
                               class="custom-control custom-control-inline custom-checkbox custom-control-nameless m-0 align-top">
-                              <input type="checkbox" class="custom-control-input item-checkbox" id="item-<?=$item['id'] ?>" data-id="<?=$item['id'] ?>">
+                              <input type="checkbox" class="custom-control-input item-checkbox" id="item-<?=$item['id'] ?>" data-id="<?=$item['id']?>">
                               <label class="custom-control-label" for="item-<?=$item['id'] ?>"></label>
                             </div>
                           </td>

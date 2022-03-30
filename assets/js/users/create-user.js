@@ -5,6 +5,7 @@ jQuery(function($){
       $('.switch_checkbox').prop('checked', false);
       $('#update-user-button').attr('hidden', true);
       $('#store-user-button').attr('hidden', false);
+      $('#all-items').prop('checked', false);
       $('.errors').attr('hidden', true);
       $('#f_name').val('');
       $('#l_name').val('');
@@ -68,7 +69,7 @@ jQuery(function($){
                 user_item +=  'not-active-circle';
               }
                
-              user_item += `"></i></td>
+              user_item += `" id="status-`+user.id+`"></i></td>
               <td class="text-center align-middle">
                 <div class="btn-group align-top">
                   <button class="btn btn-sm btn-outline-secondary badge edit-user-button" type="button" data-id="`+user.id+`">Edit</button>

@@ -85,55 +85,63 @@ $(document).ready(function() {
 
     function setStatus(checkedInput, status){
 
-        checkedInput.forEach(function(user_id) {
+        let form_data = new FormData();
 
-            let form_data = new FormData();
-            form_data.append('id', user_id);
-            form_data.append('status', status);
+        ids = checkedInput + "";
+
+        form_data.append('ids', ids);
+        form_data.append('status', status);
 
             $.ajax({
-                url: "users/update_status.php",
+                url: "users/mass_update_status.php",
                 type : "POST",
                 contentType: false,
                 processData: false,
                 cache: false,
                 data : form_data,
                 success : function(result) {
-                    if(result.status == 1){
-                        $('#status-'+result.id).removeClass('not-active-circle').addClass('active-circle');
-                    }
-                    else{
-                        $('#status-'+result.id).removeClass('active-circle').addClass('not-active-circle');
-                    }
+                    let items = Object.keys(result);
+
+                    for (const user of items) {
+                        if(status == 1){
+                            $('#status-'+user).removeClass('not-active-circle').addClass('active-circle');
+                        }
+                        else{
+                            $('#status-'+user).removeClass('active-circle').addClass('not-active-circle');
+                        }
+                      }
                 },
                 error: function(xhr, resp, text) {
                     console.log(xhr, resp, text);
                 }
             });
-        });
     }
 
     function deleteUsers(checkedInput){
 
-        checkedInput.forEach(function(user_id) {
+        let form_data = new FormData();
 
-            let form_data = new FormData();
-            form_data.append('id', user_id);
+        ids = checkedInput + "";
 
-            $.ajax({
-                url: "users/delete.php",
-                type : "POST",
-                contentType: false,
-                processData: false,
-                cache: false,
-                data : form_data,
-                success : function(result) {
-                    $('#record-'+user_id).empty();
-                },
-                error: function(xhr, resp, text) {
-                    console.log(xhr, resp, text);
-                }
-            });
+        form_data.append('ids', ids);
+
+        $.ajax({
+            url: "users/mass_delete.php",
+            type : "POST",
+            contentType: false,
+            processData: false,
+            cache: false,
+            data : form_data,
+            success : function(result) {
+                let items = Object.keys(result);
+                for (const user of items) {
+                    $('#record-'+user).empty();
+                  }
+            },
+            error: function(xhr, resp, text) {
+                console.log(xhr, resp, text);
+            }
         });
+
     }
 });
