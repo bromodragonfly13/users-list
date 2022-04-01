@@ -72,7 +72,6 @@ jQuery(function($){
                 $('#user-form-modal').modal('toggle');
 
                 let user = result.user;
-                console.log(user)
 
                 $('#name-'+user.id).text(user.l_name+' '+user.f_name);
 

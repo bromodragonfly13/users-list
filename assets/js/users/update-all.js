@@ -1,9 +1,6 @@
 $(document).ready(function() {
 
-    $('.item-checkbox').each(function(id, el) {
-        $(this).prop('checked', false);
-    });
-    $('#all-items').prop('checked', false);
+    resetCheckbox();
     $('#one-action').val(0);
     $('#two-action').val(0);
 
@@ -110,6 +107,8 @@ $(document).ready(function() {
                             $('#status-'+user).removeClass('active-circle').addClass('not-active-circle');
                         }
                       }
+
+                      resetCheckbox();
                 },
                 error: function(xhr, resp, text) {
                     console.log(xhr, resp, text);
@@ -137,11 +136,19 @@ $(document).ready(function() {
                 for (const user of items) {
                     $('#record-'+user).empty();
                   }
+                resetCheckbox();
             },
             error: function(xhr, resp, text) {
                 console.log(xhr, resp, text);
             }
         });
 
+    }
+
+    function resetCheckbox(){
+        $('.item-checkbox').each(function(id, el) {
+            $(this).prop('checked', false);
+        });
+        $('#all-items').prop('checked', false);
     }
 });
